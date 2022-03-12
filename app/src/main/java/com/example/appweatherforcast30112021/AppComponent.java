@@ -5,14 +5,18 @@ import android.content.Context;
 
 import com.example.appweatherforcast30112021.model.Xehoi;
 
+import javax.inject.Singleton;
+
 import dagger.BindsInstance;
 import dagger.Component;
 
-@Component(modules = AppModule.class)
+@Singleton
+@Component(modules = AppModule.class )
 public interface AppComponent{
 
-    void injectMain(MainActivity mainActivity);
-    void injectMain(MainActivity2 mainActivity);
+    void injectApplication(MyApplication myApplication);
+
+    ActivityComponent.Builder activityBuilder();
 
     @Component.Builder
     interface AppBuilder{

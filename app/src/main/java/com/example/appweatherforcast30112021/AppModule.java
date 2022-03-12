@@ -8,16 +8,16 @@ import com.example.appweatherforcast30112021.model.Dongco;
 import dagger.Module;
 import dagger.Provides;
 
-@Module
+@Module(subcomponents = ActivityComponent.class)
 public class AppModule {
 
     @Provides
-    public Dongco provideDongCo(Context context){
+    public static Dongco provideDongCo(Context context){
         return new Dongco(context);
     }
 
     @Provides
-    public Banhxe provideBanhxe(){
+    public static Banhxe provideBanhxe(){
         return new Banhxe();
     }
 

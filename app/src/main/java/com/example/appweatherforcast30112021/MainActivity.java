@@ -9,28 +9,23 @@ import android.view.View;
 
 import com.example.appweatherforcast30112021.databinding.ActivityMainBinding;
 import com.example.appweatherforcast30112021.model.Xehoi;
+import com.example.appweatherforcast30112021.model.Xemay;
 
 import javax.inject.Inject;
 
 public class MainActivity extends AppCompatActivity {
 
-
     @Inject
-    Xehoi xehoi;
-
+    Xemay xemay;
 
     ActivityMainBinding mBinding;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mBinding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(mBinding.getRoot());
 
-       DaggerAppComponent
-               .builder()
-               .context(getApplicationContext())
-               .build()
-               .injectMain(this);
 
 
        mBinding.btnNavigateScreen2.setOnClickListener(new View.OnClickListener() {
@@ -41,6 +36,6 @@ public class MainActivity extends AppCompatActivity {
            }
        });
 
-        Log.d("BBB","Main "  + xehoi.toString());
+//        Log.d("BBB","Main "  + xehoi.toString());
     }
 }

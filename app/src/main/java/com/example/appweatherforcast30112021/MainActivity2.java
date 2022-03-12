@@ -11,20 +11,16 @@ import javax.inject.Inject;
 
 public class MainActivity2 extends AppCompatActivity {
 
-    @Inject
-    Xehoi xehoi;
+
+//    Xehoi xehoi;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
-
-        DaggerAppComponent
-                .builder()
-                .context(getApplicationContext())
-                .build()
-                .injectMain(this);
-
-        Log.d("BBB","Main2 "  + xehoi.toString());
+//
+//        xehoi = ((MyApplication)getApplication()).xehoi;
+//
+//        Log.d("BBB","Main2 "  + xehoi.toString());
     }
 }
