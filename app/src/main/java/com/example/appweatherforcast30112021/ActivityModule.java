@@ -10,6 +10,7 @@ import dagger.Provides;
 @Module
 public class ActivityModule {
 
+    @ActivityScope
     @Provides
     public static Xemay provideXeMay(Dongco dongco , Banhxe banhxe){
         return new Xemay(dongco,banhxe);

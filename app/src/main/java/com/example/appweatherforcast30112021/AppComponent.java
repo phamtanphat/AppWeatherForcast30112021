@@ -16,7 +16,7 @@ public interface AppComponent{
 
     void injectApplication(MyApplication myApplication);
 
-    ActivityComponent.Builder activityBuilder();
+    ActivityComponent.Builder getActivityComponent();
 
     @Component.Builder
     interface AppBuilder{

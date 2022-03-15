@@ -20,13 +20,16 @@ public class MainActivity extends AppCompatActivity {
 
     ActivityMainBinding mBinding;
 
+    ActivityComponent activityComponent;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mBinding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(mBinding.getRoot());
 
+        activityComponent = ((MyApplication)getApplication()).appComponent.getActivityComponent().build();
 
+        activityComponent.inject(this);
 
        mBinding.btnNavigateScreen2.setOnClickListener(new View.OnClickListener() {
            @Override
@@ -36,6 +39,6 @@ public class MainActivity extends AppCompatActivity {
            }
        });
 
-//        Log.d("BBB","Main "  + xehoi.toString());
+        Log.d("BBB","Main "  + xemay.toString());
     }
 }
