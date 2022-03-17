@@ -6,35 +6,42 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
+import androidx.databinding.DataBindingUtil;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
+
 import com.example.appweatherforcast30112021.R;
+import com.example.appweatherforcast30112021.data.model.WeatherResponse;
+import com.example.appweatherforcast30112021.databinding.ActivityCurrentTempBinding;
+import com.example.appweatherforcast30112021.di.ViewModelFactory;
 import com.example.appweatherforcast30112021.ui.MyApplication;
 
+
+import javax.inject.Inject;
 
 import dagger.android.support.DaggerAppCompatActivity;
 import retrofit2.Retrofit;
 
 public class CurrentTempActivity extends DaggerAppCompatActivity {
 
-    Retrofit retrofit;
+    @Inject
+    CurrentTempViewModel mViewModel;
 
-    Button mBtn;
+    ActivityCurrentTempBinding mBinding;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_current_temp);
+        mBinding = DataBindingUtil.setContentView(this,R.layout.activity_current_temp);
 
-        retrofit = ((MyApplication) getApplication()).mRetrofit;
-
-        mBtn = findViewById(R.id.btnNavigateScreen2);
-
-        mBtn.setOnClickListener(new View.OnClickListener() {
+        mViewModel.getWeatherResponse().observe(this, new Observer<WeatherResponse>() {
             @Override
-            public void onClick(View view) {
-                startActivity(new Intent(CurrentTempActivity.this,MainActivity.class));
+            public void onChanged(WeatherResponse weatherResponse) {
+                Log.d("BBB",weatherResponse.getMain().getTemp() + "");
             }
         });
 
-        Log.d("BBB",retrofit.toString());
+        mViewModel.getTempFromCityName("Hanoi");
 
     }
 }
